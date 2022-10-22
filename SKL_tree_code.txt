@@ -1,0 +1,8 @@
+mafft --auto OG0004661_M50I2e-5_1_protein_seq.fa >OG0004661_M50I2e-5_1_protein_aln.fa
+trimal -in OG0004661_M50I2e-5_1_protein_aln.fa -automated1 -htmlout OG0004661_M50I2e-5_1_protein_MSA_automated1.html
+trimal -in OG0004661_M50I2e-5_1_protein_aln.fa -automated1 -fasta >OG0004661_M50I2e-5_1_protein_MSA_automated1.fa
+perl Fasta2Phylip.pl OG0004661_M50I2e-5_1_protein_MSA_automated1.fa OG0004661_M50I2e-5_1_protein_MSA_automated1.phy
+/home/tfliu/software/modeltest-ng-static -i OG0004661_M50I2e-5_1_protein_MSA_automated1.fa -d aa
+
+raxmlHPC-PTHREADS -s OG0004661_M50I2e-5_1_protein_MSA_automated1.phy -n OG0004661_M50I2e-5_1_protein_MSA_automated1 -m PROTGAMMAIJTTF -T 4 -N 100 -p 12345 -f a -x 12345
+
