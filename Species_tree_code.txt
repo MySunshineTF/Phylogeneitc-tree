@@ -1,0 +1,13 @@
+# concatenation.
+perl low_copy_RNS48_orthogroup_pal2nal_concatenation.pl RNS48_127_filtered_low_copy_orthogroups_single_copy_retain_pal2nal_automated1.fa 
+
+# Modeltest
+/home/tfliu/software/modeltest-ng-static -i RNS48_127_filtered_low_copy_orthogroups_single_copy_retain_pal2nal_automated1.fa -d nt
+
+
+# species tree
+perl Fasta2Phylip.pl RNS48_127_filtered_low_copy_orthogroups_single_copy_retain_pal2nal_automated1.fa RNS48_127_filtered_low_copy_orthogroups_single_copy_retain_pal2nal_automated1.phy
+
+source /home/conda/lauch.miniconda3.sh
+conda activate bio
+raxmlHPC-PTHREADS -s RNS48_127_filtered_low_copy_orthogroups_single_copy_retain_pal2nal_automated1.phy -n RNS48_127_filtered_low_copy_orthogroups_single_copy_retain_pal2nal_automated1 -m GTRGAMMAIX -T 4 -N 100 -p 12345 -f a -x 12345
